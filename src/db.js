@@ -33,7 +33,7 @@ async function getClockInDB(EmployeeID = null) {
       queryStr += ' WHERE EmployeeID = @EmployeeID';
       request = request.input('EmployeeID', sql.Int, EmployeeID); // Gán tham số cho request
     }
-
+    queryStr += ' ORDER BY ClockInTime DESC';
     const result = await request.query(queryStr); // Sử dụng request để thực thi truy vấn
     console.log('Bản ghi chấm công:', result.recordset);
     return result.recordset;
