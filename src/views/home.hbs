@@ -1,17 +1,50 @@
-<h1>Danh sách chấm công</h1>
+<div class="container">
+  <h1 class="text-center mb-4">Danh sách chấm công</h1>
 
-<!-- Form chấm công -->
-<h2>Chấm công</h2>
-<form action="/clockIn" method="POST">
-  <label for="employeeID">Employee ID:</label>
-  <input type="number" id="employeeID" name="employeeID" required>
-  <button type="submit">Chấm công</button>
-</form>
+  <nav class="navbar bg-light mb-4 rounded">
+    <div class="container-fluid">
+      <form method="GET" class="d-flex w-100">
+        <input class="form-control me-2" name="id" type="search" placeholder="Nhập ID nhân viên" required>
+        <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+      </form>
+    </div>
+  </nav>
 
-<!-- Danh sách bản ghi chấm công -->
-<h2>Bản ghi chấm công</h2>
-<ul>
-  {{#each clockInRecords}}
-    <li>Nhân viên ID: {{this.EmployeeID}} - Thời gian chấm công: {{this.ClockInTime}}</li>
-  {{/each}}
-</ul>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Chấm công</h2>
+      <form action="/clockIn" method="POST" class="d-flex align-items-center">
+        <div class="mb-3 me-3">
+          <label for="employeeID" class="form-label">Employee ID:</label>
+          <input type="number" class="form-control" id="employeeID" name="employeeID" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Chấm công</button>
+      </form>
+    </div>
+  </div>
+
+  {{#if error}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{error}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {{/if}}
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Bản ghi chấm công</h2>
+      {{#if clockInRecords.length}}
+        <ul class="list-group">
+          {{#each clockInRecords}}
+            <li class="list-group-item">
+              <span>Nhân viên ID: {{this.EmployeeID}}</span>
+              <span>Thời gian chấm công: {{formatDate this.ClockInTime}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p class="text-muted">Không có bản ghi chấm công nào.</p>
+      {{/if}}
+    </div>
+  </div>
+</div>

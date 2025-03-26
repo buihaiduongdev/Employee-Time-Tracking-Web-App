@@ -9,8 +9,20 @@ const port = 3000;
 app.use(express.json()); // Parse JSON body
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded body (cho form HTML)
 
-app.engine('hbs', engine({ extname: '.hbs' }));
-app.set('view engine', 'hbs');
+app.engine('hbs', engine({
+  extname: '.hbs',
+  helpers: {
+    formatDate: function (date) {
+      const d = new Date(date);
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, nên cộng thêm 1
+      const year = d.getFullYear();
+      const hours = String(d.getHours()).padStart(2, '0');
+      const minutes = String(d.getMinutes()).padStart(2, '0');
+      return `${day}-${month}-${year} ${hours}:${minutes}`;
+    },
+  },
+}));app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 connectDB()
