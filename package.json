@@ -1,0 +1,31 @@
+{
+  "name": "winfromclockin",
+  "version": "1.0.0",
+  "description": "ExpressJS project for the clock-in function in the 'Coffee Shop Management System' Winform project",
+  "main": "src/index.js",
+  
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buihaiduongdev/WinFormClockIn.git"
+  },
+  "author": "Bui Hai Duong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buihaiduongdev/WinFormClockIn/issues"
+  },
+  "homepage": "https://github.com/buihaiduongdev/WinFormClockIn#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "msnodesqlv8": "^4.5.0",
+    "mssql": "^11.0.1",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
