@@ -34,7 +34,8 @@
     <div class="card-body">
       <h2 class="card-title">Bản ghi chấm công</h2>
       {{#if clockInRecords.length}}
-        <ul class="list-group">
+        <div style="max-height: 300px; overflow-y: auto;">
+          <ul class="list-group">
           {{#each clockInRecords}}
             <li class="list-group-item">
               <span>Nhân viên ID: {{this.EmployeeID}}</span>
@@ -42,6 +43,7 @@
             </li>
           {{/each}}
         </ul>
+        </div>
       {{else}}
         <p class="text-muted">Không có bản ghi chấm công nào.</p>
       {{/if}}

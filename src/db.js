@@ -33,7 +33,7 @@ async function getClockInDB(EmployeeID = null) {
       queryStr += ' WHERE EmployeeID = @EmployeeID';
       request = request.input('EmployeeID', sql.Int, EmployeeID); // Gán tham số cho request
     }
-    queryStr += ' ORDER BY ClockInTime DESC';
+    queryStr += ' ORDER BY CAST(ClockInTime AS DATE) DESC, ClockInTime DESC';
     const result = await request.query(queryStr); // Sử dụng request để thực thi truy vấn
     console.log('Bản ghi chấm công:', result.recordset);
     return result.recordset;
@@ -50,7 +50,7 @@ async function clockIn(employeeID) {
   try {
     const result = await pool.request()
       .input('EmployeeID', sql.Int, employeeID)
-      .input('ClockInTime', sql.DateTime, new Date()) // Thời gian hiện tại
+      .input('ClockInTime', sql.VarChar, new Date().toISOString()) // ISO 8601 format
       .query('INSERT INTO ClockIn (EmployeeID, ClockInTime) VALUES (@EmployeeID, @ClockInTime)');
     console.log('Chấm công thành công cho nhân viên:', employeeID);
     return result;
