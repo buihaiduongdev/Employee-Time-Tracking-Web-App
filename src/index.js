@@ -45,11 +45,12 @@ app.get('/', async (req, res) => {
     res.render('home', { clockInRecords }); // Truyền dữ liệu vào template
   } catch (err) {
     console.error('Lỗi khi lấy dữ liệu chấm công:', err);
-    res.render('home', { clockInRecords: [] }); // Trả về mảng rỗng nếu có lỗi
+    res.render('home'); // Trả về mảng rỗng nếu có lỗi
   }
 });
 
 app.post('/clockIn', async(req, res) =>{
+  console.log("✅ Nhận POST: ", req.body);
   try {
     const { employeeID } = req.body; // Lấy employeeID từ request body
     if (!employeeID) {
@@ -63,6 +64,6 @@ app.post('/clockIn', async(req, res) =>{
   }
 });
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log('Server is running on all interfaces');
 });

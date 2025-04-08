@@ -35,7 +35,6 @@ async function getClockInDB(EmployeeID = null) {
     }
     queryStr += ' ORDER BY CAST(ClockInTime AS DATE) DESC, ClockInTime DESC';
     const result = await request.query(queryStr); // Sử dụng request để thực thi truy vấn
-    console.log('Bản ghi chấm công:', result.recordset);
     return result.recordset;
   } catch (err) {
     console.error('Lỗi truy vấn:', err);
