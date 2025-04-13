@@ -3,3 +3,9 @@ ExpressJS project for the clock-in function in the [Restaurant Management System
 
 ## DEMO
 ![DEMO](https://github.com/buihaiduongdev/project-images/blob/main/ClockInExpressDemo.jpeg)
+
+## ARDRUINO WIFI CONNECTING
+```
+const char* ssid = "D367";
+const char* password = "duong123";
+```
