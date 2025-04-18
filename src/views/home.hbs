@@ -10,19 +10,6 @@
     </div>
   </nav>
 
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h2 class="card-title">Chấm công</h2>
-      <form action="/clockIn" method="POST" class="d-flex align-items-center">
-        <div class="mb-3 me-3">
-          <label for="employeeID" class="form-label">Employee ID:</label>
-          <input type="number" class="form-control" id="employeeID" name="employeeID" required>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">Chấm công</button>
-      </form>
-    </div>
-  </div>
-
   {{#if error}}
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       {{error}}
